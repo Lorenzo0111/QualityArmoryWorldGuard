@@ -1,0 +1,5 @@
+name: QAWorldGuard
+version: '${version}'
+main: me.lorenzo0111.qa.worldguard.QAWorldGuard
+api-version: 1.17
+depend: [ WorldGuard, QualityArmory ]
