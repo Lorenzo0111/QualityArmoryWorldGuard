@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'me.lorenzo0111.qa'
-version = '1.0'
+version = '1.1.1'
 
 repositories {
     mavenCentral()
@@ -54,4 +54,9 @@ processResources {
     filesMatching('plugin.yml') {
         expand props
     }
+}
+
+jar {
+    archiveVersion.set("")
+    archiveBaseName.set("QAWorldGuard")
 }

@@ -21,13 +21,13 @@ public final class QAWorldGuard extends JavaPlugin implements Listener {
     private StateFlag use;
 
     @Override
-    public void onEnable() {
+    public void onLoad() {
         FlagRegistry registry = WorldGuard.getInstance().getFlagRegistry();
         try {
             use = new StateFlag("qa-use", true);
             registry.register(use);
         } catch (FlagConflictException ignored) {
-            Flag<?> existing = registry.get("my-custom-flag");
+            Flag<?> existing = registry.get("qa-use");
             if (existing instanceof StateFlag) {
                 use = (StateFlag) existing;
             }
@@ -35,16 +35,13 @@ public final class QAWorldGuard extends JavaPlugin implements Listener {
 
         if (use == null) {
             this.setEnabled(false);
-            return;
         }
-
-        Bukkit.getPluginManager().registerEvents(this,this);
-        this.getLogger().info("Successfully hooked QualityArmory with WorldGuard.");
     }
 
     @Override
-    public void onDisable() {
-        // Plugin shutdown logic
+    public void onEnable() {
+        Bukkit.getPluginManager().registerEvents(this,this);
+        this.getLogger().info("Successfully hooked QualityArmory with WorldGuard.");
     }
 
     @EventHandler
